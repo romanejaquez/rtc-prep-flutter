@@ -14,6 +14,10 @@ class ExamQuestionsRepository {
       final payload = responseBody.map((e) => ExamQuestion.fromJson(e as Map<String, dynamic>)).toList();
 
       completer.complete(payload);
+    }).catchError((error) {
+      completer.completeError(error.toString());
+    }).onError((error, stackTrace) {
+      completer.completeError(error.toString());
     });
 
     return completer.future;

@@ -3,6 +3,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_rtc_prep/models/exam_question.model.dart';
 import 'package:flutter_rtc_prep/providers/exam_providers.dart';
+import 'package:flutter_rtc_prep/styles/styles.dart';
 import 'package:flutter_rtc_prep/widgets/question_option_container.dart';
 
 class ExamQuestionContainer extends ConsumerWidget {
@@ -21,7 +22,9 @@ class ExamQuestionContainer extends ConsumerWidget {
       key: ValueKey(ref.read(examQuestionsVM.notifier).getCurrentQuestionIndex().toDouble()),
       children: [
         Text(
-          question.title)
+          question.title,
+          style: RTCPrepStyles.headlineSmall,
+        )
         .animate()
         .slideX(
             begin: 0.25,

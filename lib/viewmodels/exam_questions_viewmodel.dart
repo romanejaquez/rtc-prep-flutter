@@ -100,4 +100,17 @@ class ExamQuestionsViewModel extends StateNotifier<List<ExamQuestion>> {
 
     ref.read(examQuestionVM.notifier).state = getCurrentQuestion();
   }
+
+  void revealCorrectAnswer() {
+    state = [
+      for(final question in state)
+        if (question.currentQuestion)
+          question.copyWith(revealCorrectAnswer: !question.revealCorrectAnswer)
+        else
+          question 
+        
+    ];
+
+    ref.read(examQuestionVM.notifier).state = getCurrentQuestion();
+  }
 }

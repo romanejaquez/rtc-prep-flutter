@@ -10,6 +10,7 @@ class ExamQuestion {
   final ExamQuestionOptionType optionType;
   final List<QuestionOption> options;
   final bool currentQuestion;
+  final bool revealCorrectAnswer;
 
   ExamQuestion({
     required this.title,
@@ -19,6 +20,7 @@ class ExamQuestion {
     required this.optionType,
     required this.options,
     this.currentQuestion = false,
+    this.revealCorrectAnswer = false,
   });
 
   ExamQuestion copyWith({
@@ -29,6 +31,7 @@ class ExamQuestion {
     ExamQuestionOptionType? optionType,
     List<QuestionOption>? options,
     bool? currentQuestion,
+    bool? revealCorrectAnswer,
   }) {
     return ExamQuestion(
       title: title ?? this.title, 
@@ -37,7 +40,8 @@ class ExamQuestion {
       supportiveInfo: supportiveInfo ?? this.supportiveInfo, 
       optionType: optionType ?? this.optionType, 
       options: options ?? this.options,
-      currentQuestion: currentQuestion ??  this.currentQuestion
+      currentQuestion: currentQuestion ??  this.currentQuestion,
+      revealCorrectAnswer: revealCorrectAnswer ?? this.revealCorrectAnswer,
     );
   }
 
