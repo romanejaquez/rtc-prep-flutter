@@ -14,5 +14,6 @@ class RTCPrepColors {
   static const Color rightAnswerLabel = Color(0xFF006500);
 
   static const Color missingAnswerLabel = Color(0xFF005A76);
+  static const Color loadingBgColor = Color(0xFF4285F4);
 
 }

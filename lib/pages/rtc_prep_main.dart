@@ -94,26 +94,25 @@ class RTCPrepMain extends StatelessWidget {
                                 children: [
                                   Text('Note:', textAlign: TextAlign.left, style: RTCPrepStyles.headlineSmall),
                                   Text('This is a compilation of prep questions for the Professional Cloud Architect Certification study group, led by GDG Lawrence.\n\nThis is not meant to be material for you to go study from only and then take the exam. You MUST study for the exam from multiple sources.\n\nThe questions here are collected from the internet, and we are not responsible whether the question might be wrong, but we did our best to get the best answers. It is meant to be ONLY a preparation for that exam, so you get a feel for the testing experience.'),
-                                  RTCPrepStyles.smallVGap,
-                                  Row(
-                                    children: [
-                                      Consumer(
-                                        builder: (context, ref, child) {
-                                                    
-                                          final agreement = ref.watch(agreementCheckProvider);
-                                          return Checkbox(value: agreement, onChanged: (value) {
-                                            ref.read(agreementCheckProvider.notifier).state = value!;
-                                          });
-                                        },
-                                      ),
-                                      const SizedBox(child: Text('I understand. I will proceed.', style: RTCPrepStyles.headlineSmall))
-                                    ],
-                                  ),
-                                  RTCPrepStyles.smallVGap,
+                                  
                                 ],
                               ),
                             ),
-                          )
+                          ),
+                          Row(
+                            children: [
+                              Consumer(
+                                builder: (context, ref, child) {
+                                            
+                                  final agreement = ref.watch(agreementCheckProvider);
+                                  return Checkbox(value: agreement, onChanged: (value) {
+                                    ref.read(agreementCheckProvider.notifier).state = value!;
+                                  });
+                                },
+                              ),
+                              const SizedBox(child: Text('I understand. I will proceed.', style: RTCPrepStyles.headlineSmall))
+                            ],
+                          ),
                         ]
                       ),
                     ),
