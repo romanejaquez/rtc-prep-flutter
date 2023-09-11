@@ -17,7 +17,7 @@ class ExamQuestionWrapperContainer extends StatelessWidget {
         children: [
           ExamTrackerHeader(),
           RTCPrepStyles.smallVGap,
-          ExamQuestionContainer(),
+          Expanded(child: ExamQuestionContainer()),
           RTCPrepStyles.smallVGap,
           ExamQuestionBottomRow()
         ],

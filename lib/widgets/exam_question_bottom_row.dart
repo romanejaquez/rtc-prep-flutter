@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_rtc_prep/enums.dart';
 import 'package:flutter_rtc_prep/providers/exam_providers.dart';
 import 'package:flutter_rtc_prep/styles/colors.dart';
 import 'package:flutter_rtc_prep/styles/styles.dart';
+import 'package:flutter_rtc_prep/utils.dart';
 
 class ExamQuestionBottomRow extends ConsumerWidget {
   const ExamQuestionBottomRow({super.key});
@@ -87,6 +89,39 @@ class ExamQuestionBottomRow extends ConsumerWidget {
                 Text('Reveal Correct Answer', textAlign: TextAlign.center, style: RTCPrepStyles.headlineSmall.copyWith(
                   color: examVMNotifier.canMoveToNext() ? RTCPrepColors.brightBlue : Colors.grey.withOpacity(0.5)
                 )),
+              ],
+            ),
+          )
+        ),
+        RTCPrepStyles.xsmallVGap,
+        ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            shape: const StadiumBorder(),
+            elevation: 0,
+            shadowColor: Colors.transparent,
+            backgroundColor: RTCPrepColors.positiveGreen,
+          ),
+          onPressed: () {
+              Utils.showAlertDialog(
+                type: AlertDialogType.yesNo,
+                title: 'Exit Exam',
+                content: 'Are you sure you want to finish the exam now?',
+                context: context,
+                onOptionSelected: (AlertDialogOptions option) {
+                  if (option == AlertDialogOptions.yes) {
+                    examVMNotifier.finishExam(context);
+                  }
+                }
+              );
+          },
+          child: const Padding(
+            padding: RTCPrepStyles.smallPadding,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(Icons.logout, color: Colors.white),
+                RTCPrepStyles.xsmallHGap,
+                Text('Exit Exam', style: RTCPrepStyles.headlineSmall),
               ],
             ),
           )

@@ -3,3 +3,7 @@ enum ExamQuestionOptionType {
   singleChoice,
   multipleChoice,
 }
+
+enum AlertDialogType { ok, yesNo, yesNoCancel, okCancel }
+
+enum AlertDialogOptions { ok, yes, no, cancel }

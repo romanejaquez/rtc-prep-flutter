@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_rtc_prep/enums.dart';
 import 'package:flutter_rtc_prep/models/exam_question.model.dart';
 import 'package:flutter_rtc_prep/models/question_option.model.dart';
+import 'package:flutter_rtc_prep/pages/rtc_prep_main.dart';
 import 'package:flutter_rtc_prep/pages/rtc_prep_results.dart';
 import 'package:flutter_rtc_prep/providers/exam_providers.dart';
 import 'package:go_router/go_router.dart';
@@ -20,7 +21,10 @@ class ExamQuestionsViewModel extends StateNotifier<List<ExamQuestion>> {
   void initializeExam(List<ExamQuestion> questions) {
     state = [
       for(final (index, question) in questions.indexed)
-        question.copyWith(currentQuestion: index == 0)
+        question.copyWith(
+          currentQuestion: index == 0,
+          options: question.options.map((o) => o.copyWith(isSelected: false)).toList()
+        )
     ];
 
     _currentQuestionIndex = 0;
@@ -112,5 +116,18 @@ class ExamQuestionsViewModel extends StateNotifier<List<ExamQuestion>> {
     ];
 
     ref.read(examQuestionVM.notifier).state = getCurrentQuestion();
+  }
+
+  void finishExam(BuildContext context) {
+
+    // still, go to the results page
+    Router.neglect(context, () => context.go(RTCPrepExamResults.route));
+  }
+
+  void backToMain(BuildContext context) {
+    if (state.isNotEmpty) {
+      initializeExam(state);
+    }
+    Router.neglect(context, () => context.go(RTCPrepMain.route));
   }
 }

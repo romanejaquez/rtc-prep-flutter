@@ -1,4 +1,5 @@
 import 'package:flutter_rtc_prep/pages/rtc_prep_exam.dart';
+import 'package:flutter_rtc_prep/pages/rtc_prep_final_grade.dart';
 import 'package:flutter_rtc_prep/pages/rtc_prep_main.dart';
 import 'package:flutter_rtc_prep/pages/rtc_prep_options.dart';
 import 'package:flutter_rtc_prep/pages/rtc_prep_results.dart';
@@ -40,6 +41,12 @@ class AppRoutes {
             path: RTCPrepExamResults.route,
             builder: (context, state) {
               return RTCPrepExamResults();
+            },
+          ),
+          GoRoute(
+            path: RTCPrepFinalGrade.route,
+            builder: (context, state) {
+              return RTCPrepFinalGrade();
             },
           ),
     ]

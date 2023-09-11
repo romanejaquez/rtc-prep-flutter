@@ -43,15 +43,17 @@ class QuestionOptionContainerState extends ConsumerState<QuestionOptionContainer
     }
 
     var bgColor = Colors.transparent;
-    var labelColor = Colors.black;
+    var iconLabelColor = Colors.black;
     
     if (widget.question.revealCorrectAnswer) {
       if (widget.option.correct) {
-        bgColor = RTCPrepColors.brightBlue;
+        bgColor = RTCPrepColors.rightAnswer;
+        iconLabelColor = RTCPrepColors.rightAnswerLabel;
       }
-      else if (widget.option.isSelected && !widget.option.correct) {
-        bgColor = RTCPrepColors.wrongRed;
-        labelColor = Colors.white;
+      
+      if (widget.option.isSelected && !widget.option.correct) {
+        bgColor = RTCPrepColors.wrongAnswer;
+        iconLabelColor = RTCPrepColors.wrongAnswerLabel;
       }
     }
 
@@ -74,12 +76,12 @@ class QuestionOptionContainerState extends ConsumerState<QuestionOptionContainer
             padding: const EdgeInsets.all(20),
             child: Row(
               children: [
-                Icon(widget.option.isSelected ? selectedIcon : unselectedIcon, color: labelColor),
+                Icon(widget.option.isSelected ? selectedIcon : unselectedIcon, color: iconLabelColor),
                 const SizedBox(width: 20),
                 Expanded(child: Text('${widget.option.optionLetter}. ${widget.option.title}',
                   style: RTCPrepStyles.labelMedium.copyWith(
                     fontWeight: widget.option.isSelected ? FontWeight.bold : FontWeight.normal,
-                    color: labelColor,
+                    color: iconLabelColor,
                   )
                 )),
               ],

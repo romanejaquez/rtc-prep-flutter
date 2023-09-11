@@ -36,22 +36,26 @@ class ExamQuestionContainer extends ConsumerWidget {
             duration: 0.5.seconds,
           ),
         const SizedBox(height: 20),
-        Column(
-          key: ValueKey(ref.read(examQuestionsVM.notifier).getCurrentQuestionIndex().toDouble()),
-          children: [
-            for(final option in question.options)
-              QuestionOptionContainer(question: question, option: option)
-          ].animate(
-            interval: 100.ms,
-            delay: 100.ms,
-          ).slideX(
-            begin: 0.25,
-            end: 0,
-            curve: Curves.easeInOut,
-            duration: 0.4.seconds,
-          ).fadeIn(
-            curve: Curves.easeInOut,
-            duration: 0.5.seconds,
+        Expanded(
+          child: SingleChildScrollView(
+            child: Column(
+              key: ValueKey(ref.read(examQuestionsVM.notifier).getCurrentQuestionIndex().toDouble()),
+              children: [
+                for(final option in question.options)
+                  QuestionOptionContainer(question: question, option: option)
+              ].animate(
+                interval: 100.ms,
+                delay: 100.ms,
+              ).slideX(
+                begin: 0.25,
+                end: 0,
+                curve: Curves.easeInOut,
+                duration: 0.4.seconds,
+              ).fadeIn(
+                curve: Curves.easeInOut,
+                duration: 0.5.seconds,
+              ),
+            ),
           ),
         )
       ],
