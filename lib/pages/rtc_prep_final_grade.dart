@@ -41,7 +41,7 @@ class RTCPrepFinalGrade extends ConsumerWidget {
                     Icon(result.passed ? Icons.check_circle_outline : Icons.highlight_off, color: Colors.white, size: RTCPrepStyles.x2largeIconSize),
                     RTCPrepStyles.mediumVGap,
                     Text('Your score:', style: RTCPrepStyles.headlineMedium.copyWith(color: Colors.white)),
-                    Text('${result.score.toString()}%', style: RTCPrepStyles.headlineLarge.copyWith(color: Colors.white)),
+                    Text('${result.score.toInt()}%', style: RTCPrepStyles.headlineLarge.copyWith(color: Colors.white)),
                     RTCPrepStyles.largeVGap,
                     Text(result.passed ? 'Congrats!! You passed!' : 'You did not reach the minimum score.\nPlease try again.',
                       textAlign: TextAlign.center,

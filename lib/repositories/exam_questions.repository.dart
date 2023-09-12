@@ -8,7 +8,8 @@ class ExamQuestionsRepository {
   Future<List<ExamQuestion>> getQuestions() async {
     final completer = Completer<List<ExamQuestion>>();
 
-    http.get(Uri.parse('http://localhost:8080/exam-prep')).then((response) {
+    http.get(Uri.parse('https://us-central1-romanjustcodes.cloudfunctions.net/get-rtc-prep-questions')).then((response) {
+    //http.get(Uri.parse('http://localhost:8080/exam-prep')).then((response) {
       final responseBody = json.decode(response.body) as List<dynamic>;
       responseBody.shuffle();
       final payload = responseBody.map((e) => ExamQuestion.fromJson(e as Map<String, dynamic>)).toList();
