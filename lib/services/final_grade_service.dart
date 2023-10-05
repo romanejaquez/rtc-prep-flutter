@@ -21,26 +21,21 @@ class FinalGradeService {
       
 
       allQuestions.forEach((element) {
-        bool isCorrect = element.options.where((o) => o.isSelected).length == element.options.where((o) => o.correct).length;
-        if (isCorrect) {
+        var isCorrect = element.options.where((o) => o.isSelected && o.correct).length;
+        if (isCorrect > 0) {
           correctQuestions++;
         }
       });
 
-      if (correctQuestions > 0) {
-        var allWrong = totalQuestions - correctQuestions;
-        var finalGrade = (correctQuestions / totalQuestions) * 100;
+      var allWrong = totalQuestions - correctQuestions;
+      var finalGrade = correctQuestions > 0 ? (correctQuestions / totalQuestions) * 100 : 0.0;
 
-        completerResult.complete(ExamResult(
-          score: finalGrade, 
-          wrongQuestions: allWrong, 
-          correctQuestions: correctQuestions, 
-          passed: finalGrade >= 70
-        ));
-      }
-      else {
-        completerResult.completeError('Problem processing exam score. Try again');
-      }
+      completerResult.complete(ExamResult(
+        score: finalGrade, 
+        wrongQuestions: allWrong, 
+        correctQuestions: correctQuestions, 
+        passed: finalGrade >= 70
+      ));
 
     });
 
