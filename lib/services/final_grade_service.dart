@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_rtc_prep/models/exam_result.model.dart';
 import 'package:flutter_rtc_prep/providers/exam_providers.dart';

@@ -29,7 +29,7 @@ class QuestionOption {
       title: title ?? this.title, 
       correct: correct ?? this.correct,
       isSelected: isSelected ?? this.isSelected,
-      optionLetter: optionLetter ?? this.optionLetter,
+      optionLetter: optionLetter,
     );
   }
 }

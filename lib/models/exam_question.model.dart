@@ -35,7 +35,7 @@ class ExamQuestion {
   }) {
     return ExamQuestion(
       title: title ?? this.title, 
-      imagePath: imagePath ?? this.imagePath, 
+      imagePath: imagePath, 
       notes: notes ?? this.notes, 
       supportiveInfo: supportiveInfo ?? this.supportiveInfo, 
       optionType: optionType ?? this.optionType, 

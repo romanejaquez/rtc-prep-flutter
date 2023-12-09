@@ -4,7 +4,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_rtc_prep/providers/exam_providers.dart';
 import 'package:flutter_rtc_prep/styles/colors.dart';
 import 'package:flutter_rtc_prep/styles/styles.dart';
-import 'package:go_router/go_router.dart';
 
 class RTCPrepFinalGrade extends ConsumerWidget {
 
